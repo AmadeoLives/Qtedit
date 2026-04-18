@@ -9,12 +9,12 @@ private:
     QTabWidget* tab;
     QWidget* createFontTab();
 
-    QFontComboBox* fontBox;
-    QSpinBox* sizeBox;
-
 public:
     explicit ConfDialog(QWidget* parent = nullptr);
     QDialogButtonBox* dialogButtonBox;
+
+    QFontComboBox* fontBox;
+    QSpinBox* sizeBox;
 
 private slots:
 
@@ -22,5 +22,4 @@ signals:
 
 public slots:
 signals:
-    void accepted();
 };

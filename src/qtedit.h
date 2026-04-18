@@ -1,6 +1,7 @@
 #pragma once
 #include <QtWidgets>
 #include "conf_dialog.h"
+#include "confs.h"
 
 class Qtedit : public QMainWindow {
 Q_OBJECT
@@ -39,14 +40,13 @@ private:
     QFile file;
 
     bool statusSavedFile;
-
-
+    
 protected:
 
 public:
     explicit Qtedit();
 
-    QSettings settings {QSettings::NativeFormat, QSettings::UserScope, "Qtedit", "Qtedit"};
+    Confs confs {QSettings::NativeFormat, QSettings::UserScope, "Qtedit", "Qtedit"};
     ConfDialog* conf;
 
 private slots:
@@ -57,11 +57,11 @@ private slots:
 signals:
 
 public slots:
-    void testing();
     void openFile();
     void saveFile();
     void saveFileAs();
 
+    void setFont();
 
     void openPref();
 };

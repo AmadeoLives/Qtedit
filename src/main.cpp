@@ -6,7 +6,7 @@ int main(int argc, char* argv[]){
     auto* qtedit = new Qtedit;
     qtedit->conf = new ConfDialog(qtedit);
 
-    QObject::connect(qtedit->conf->dialogButtonBox, &QDialogButtonBox::accepted, qtedit, &Qtedit::testing);
+    QObject::connect(qtedit->conf->dialogButtonBox, &QDialogButtonBox::accepted, qtedit, &Qtedit::setFont);
 
     qtedit->show();
 

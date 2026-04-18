@@ -1,8 +1,12 @@
 #include "conf_dialog.h"
 #include "qtedit.h"
 
-void Qtedit::testing(){
-    textArea->setText("If you can read this text, the function works.");
+void Qtedit::setFont(){
+    confs.setValue("textArea/fontFamily", conf->fontBox->currentFont().family());
+    confs.setValue("textArea/fontSize", conf->sizeBox->value());
+    auto fontFamily = confs.value("textArea/fontFamily").toString();
+    auto fontSize = confs.value("textArea/fontSize").toInt();
+    textArea->setFont(QFont(fontFamily, fontSize));
 }
 
 ConfDialog::ConfDialog(QWidget* parent) : QDialog(parent)
@@ -20,7 +24,11 @@ ConfDialog::ConfDialog(QWidget* parent) : QDialog(parent)
 QWidget* ConfDialog::createFontTab(){
     fontBox = new QFontComboBox;
     sizeBox = new QSpinBox;
+
+    //fontBox->setFontFilters(QFontComboBox::MonospacedFonts);
+
     auto* layout = new QFormLayout;
+
     layout->addRow("Font family:", fontBox);
     layout->addRow("Font size:", sizeBox);
 
