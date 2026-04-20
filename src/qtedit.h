@@ -2,6 +2,7 @@
 #include <QtWidgets>
 #include "conf_dialog.h"
 #include "confs.h"
+#include "highlighter.h"
 
 class Qtedit : public QMainWindow {
 Q_OBJECT
@@ -40,6 +41,9 @@ private:
     QFile file;
 
     bool statusSavedFile;
+
+    HighlighterCPP* cppHighlight;
+    HighlighterPython* pythonHighlight;
     
 protected:
 

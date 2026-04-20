@@ -57,6 +57,7 @@ void Qtedit::createMenus(){
 }
 
 QWidget* Qtedit::createTextArea(){
+
     textArea = new QTextEdit;
     connect(saveAct, &QAction::triggered, this, &Qtedit::saveFile);
     connect(saveAsAct, &QAction::triggered, this, &Qtedit::saveFileAs);
@@ -64,7 +65,11 @@ QWidget* Qtedit::createTextArea(){
 
     auto fontFamily = confs.value("textArea/fontFamily").toString();
     auto fontSize = confs.value("textArea/fontSize").toInt();
-    textArea->setFont(QFont(fontFamily, fontSize));
+    QFont font {fontFamily, fontSize};
+    font.setFixedPitch(true);
+    textArea->setFont(font);
+
+    cppHighlight = new HighlighterCPP(textArea->document());
 
     return textArea;
 }
