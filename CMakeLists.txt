@@ -1,3 +1,9 @@
+if(WIN32)
+    message(STATUS "Configuring for Windows")
+    set(GUI_TYPE WIN32)
+    #set(WIN32_EXECUTABLE TRUE)
+endif()
+
 cmake_minimum_required(VERSION 3.16)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -21,10 +27,18 @@ FILE(GLOB CXXSRC src/*.cpp)
 FILE(GLOB HEADERSRC src/*.h)
 
 qt_add_executable(${TARGET_NAME}
+    ${GUI_TYPE}
     ${CXXSRC}
     ${HEADERSRC}
 )
 
+set_target_properties(${TARGET_NAME} PROPERTIES
+    #WIN32_EXECUTABLE ON
+    AUTOMOC ON
+    #MACOSX_BUNDLE ON
+)
+
+# Ignore this for now.
 qt_add_resources(${TARGET_NAME} "images"
     PREFIX "/"
     FILES 
