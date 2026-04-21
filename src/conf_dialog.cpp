@@ -15,6 +15,7 @@ ConfDialog::ConfDialog(QWidget* parent) : QDialog(parent)
 
     dialogButtonBox = new QDialogButtonBox(QDialogButtonBox::Ok | 
             QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+    connect(dialogButtonBox, &QDialogButtonBox::rejected, this, &QDialog::close);
 
     auto* mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(fontTab);
