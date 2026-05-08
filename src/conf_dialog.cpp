@@ -13,8 +13,7 @@ ConfDialog::ConfDialog(QWidget* parent) : QDialog(parent)
 {
     auto* fontTab = createFontTab();
 
-    dialogButtonBox = new QDialogButtonBox(QDialogButtonBox::Ok | 
-            QDialogButtonBox::Apply | QDialogButtonBox::Cancel | QDialogButtonBox::Help);
+    dialogButtonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     connect(dialogButtonBox, &QDialogButtonBox::rejected, this, &QDialog::close);
 
     auto* mainLayout = new QVBoxLayout(this);

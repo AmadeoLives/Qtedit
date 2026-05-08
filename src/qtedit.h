@@ -61,6 +61,7 @@ private slots:
 signals:
 
 public slots:
+    void newFile();
     void openFile();
     void saveFile();
     void saveFileAs();

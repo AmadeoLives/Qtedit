@@ -14,7 +14,7 @@ Qtedit::Qtedit(){
     resize(QGuiApplication::primaryScreen()->availableGeometry().size() * 0.5);
 
     auto* textArea = createTextArea();
-    statusBar()->showMessage("Nice.");
+    statusBar()->show();
 
     setCentralWidget(textArea);
 }
@@ -23,6 +23,9 @@ Qtedit::Qtedit(){
 void Qtedit::createActions(){
     // File Menu Actions
     newAct = new QAction(QIcon::fromTheme(QIcon::ThemeIcon::DocumentNew), tr("&New"));
+    newAct->setShortcut(QKeySequence::New);
+    connect(newAct, &QAction::triggered, this, &Qtedit::newFile);
+
     openAct = new QAction(QIcon::fromTheme(QIcon::ThemeIcon::DocumentOpen), tr("&Open"));
     openAct->setShortcut(QKeySequence::Open);
     connect(openAct, &QAction::triggered, this, &Qtedit::openFile);
