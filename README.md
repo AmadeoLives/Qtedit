@@ -10,5 +10,4 @@ make -j$(nproc)
 ```
 
 # TO-DO
-- Make the New action in the File menu do something.
-  - Warn when selecting New while changes unsaved.
+- Line numbers
